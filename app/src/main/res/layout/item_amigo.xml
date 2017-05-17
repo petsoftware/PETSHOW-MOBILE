@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:layout_width="91dp"
+        android:layout_height="73dp"
+        android:id="@+id/itemAmigo_imgPerfil"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:id="@+id/itemAmigo_txtNome"
+            android:text="LISA"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textAlignment="viewStart" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="171dp"
+            android:id="@+id/itemAmigo_fotoAnimalLay"
+            android:layout_height="50dp"
+            android:padding="12dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/alert_circle_outline"
+                android:id="@+id/itemAmigo_imgAnimal1"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/border_toast_warning"
+                android:id="@+id/itemAmigo_imgAnimal2"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"
+                android:id="@+id/itemAmigo_imgAnimal3"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/com_facebook_button_icon_blue"
+                android:id="@+id/itemAmigo_imgAnimal4"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/itemAmigo_imgAnimalLay">
+
+            <ImageView
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/alert_circle_outline"
+                android:id="@+id/itemAmigo_imgCaes"
+
+                android:layout_width="45dp" />
+
+            <TextView
+                android:text="14"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemAmigo_txtqtdCaes"
+                android:paddingTop="3dp"
+
+                android:layout_width="30dp"
+                android:layout_marginLeft="2dp" />
+
+            <ImageView
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/alert_circle_outline"
+                android:id="@+id/itemAmigo_imgGatos"
+
+                android:layout_width="45dp" />
+
+            <TextView
+                android:text="14"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemAmigo_txtqtdGato"
+                android:paddingTop="3dp"
+                android:visibility="visible"
+                android:elevation="0dp"
+                android:layout_marginLeft="2dp" />
+
+            <ImageView
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/alert_circle_outline"
+                android:id="@+id/itemAmigo_imgPassaros"
+                android:layout_width="45dp" />
+
+            <TextView
+                android:text="14"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemAmigo_txtqtdPassaros"
+                android:paddingTop="3dp"
+                android:visibility="visible"
+                android:layout_marginLeft="2dp" />
+
+            <ImageView
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/alert_circle_outline"
+                android:id="@+id/itemAmigo_imgOutros"
+                android:layout_width="45dp" />
+
+            <TextView
+                android:text="14"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemAmigo_txtqtdOutros"
+                android:paddingTop="3dp"
+                android:layout_width="30dp"
+                android:layout_marginLeft="2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

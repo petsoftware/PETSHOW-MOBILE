@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_type_cadastro_pet">
+        <item>MEU PET</item>
+        <item>PET PARA ADOÇÃO</item>
+        <item>PET PERDIDO</item>
+    </string-array>
+
+    <string-array name="list_type_get_photo">
+        <item>GALERIA</item>
+        <item>TIRAR FOTO</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">PETSHOW</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="facebook_app_id">945090532299696</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="lblAdicionar">Adicionar</string>
+    <string name="lblEditarPerfil">Editar Perfil</string>
+    <string name="lblMeuPet">Meus Pets</string>
+    <string name="lblAmigos">Amigos</string>
+    <string name="lblAdocao">Adoção</string>
+    <string name="lblAchadosPerdidos">Achados e Perdidos</string>
+    <string name="lblProdutos">Produtos</string>
+    <string name="lblDicasAdestramento">Dicas Adestramento</string>
+    <string name="lblSair">Sair</string>
+    <string name="cancel_login">Login foi cancelado!</string>
+    <string name="erro_login">Ocorreu um erro no login!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+    <string name="title_activity_edt_usuario">Perfil</string>
+    <string name="lblinfCidade" translatable="false">Cidade</string>
+    <string name="lblInfEstado">Estado</string>
+    <string name="lblInfBairro">Bairro</string>
+    <string name="lblInfTelefone">Telefone</string>
+    <string name="lblSalvar">Salvar</string>
+    <string name="lblTrocarEndereco">Trocar Endereço</string>
+    <string name="selEstado">Selecione um estado</string>
+    <string name="selCidade">Selecione uma cidade</string>
+    <string name="selBairro">Selecione um bairro</string>
+    <string name="validacaoTelefone">Prencha o campo Telefone Ex:(99) 99999-9999</string>
+    <string name="msgPadraoProgressDialog">Carregando</string>
+    <string name="title_activity_lista_pets">Pets</string>
+    <string name="lblAdicionarPet">Adicionar Pet</string>
+    <string name="title_activity_novo_pet">Cadastrar Pet</string>
+    <string name="lblNome">Nome</string>
+    <string name="lblSexo">Sexo</string>
+    <string name="lblTipo">Tipo</string>
+    <string name="lblRaca">Raça</string>
+    <string name="lblDataNascimento">Data Nascimento</string>
+    <string name="lblVacinado">Vacinado</string>
+    <string name="lblVermifugado">Vermifugado</string>
+    <string name="lblCastrado">Castrado</string>
+    <string name="lblCancelar">Cancelar</string>
+    <string name="title_modal_tipo_cadastro_animal">O CADASTRO:</string>
+    <string name="title_modal_tipo_get_photo">Fonte</string>
+    <string name="selAnimal">Selecione o animal</string>
+    <string name="selRaca">Selecione a raça</string>
+    <string name="selFoto">Selecione uma foto</string>
+    <string name="sucessPetAdd">Pet Cadastrado!</string>
+    <string name="sucessPetExcluir">Pet Excluido!</string>
+    <string name="msgUserNotFriend">Usuario nao é seu amigo!</string>
+    <string name="erroLoginNovamente">"Ocorreu um erro! Favor fazer o login novamente!"</string>
+    <string name="erroLoginOutroCelular">"Foi feito um login com esta conta em outro celular!"</string>
+    <string name="lblEncontrei">Encontrado</string>
+    <string name="lblPerdi">Perdido</string>
+    <string name="lblData">Data</string>
+    <string name="lblCorPrincipal">Cor Principal</string>
+    <string name="lblCorSegundaria">Cor Segundaria</string>
+    <string name="lblDescPerdidoEncontrado">Como aconteceu?</string>
+    <string name="lblExcluir">Excluir</string>
+    <string name="lblPorte">Porte</string>
+    <string name="lblAdotado">Foi adotado</string>
+    <string name="lblAguarAdotacao">Aguardando adoção</string>
+    <string name="lblJaAdotado">Adotado</string>
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_main2_activityteste">Main2Activityteste</string>
+    <string name="title_activity_main2_deletar">Main2ActivityDeletar</string>
+    <string name="lblEmpty" />
+    <string name="title_activity_tipo_cadastro_animal">TipoCadastroAnimalActivity</string>
+    <string name="lblMasculino">Macho</string>
+    <string name="lblFemea">Fêmea</string>
+    <string name="title_activity_criar_post">Criar Postagem</string>
+    <string name="title_activity_carregamento">CarregamentoActivity</string>
+    <string name="title_activity_notification">Notificações</string>
+    <string name="title_activity_amigo">Amigos</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_novo_perdido">NovoPerdidoActivity</string>
+    <string name="title_activity_novo_adocao">NovoAdocaoActivity</string>
+    <string name="lblIdade">Idade</string>
+    <string name="lblSobreAnimal">Fale sobre o animal</string>
+    <string name="lblDescAcontecimento" />
+    <string name="lblMenuAchaPerdio">Acha Perdido??</string>
+
+</resources>

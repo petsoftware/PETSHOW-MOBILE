@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="VerdeFundoPet">#61c0bd</color>
+    <color name="BegieFundoPet">#f0ecdd</color>
+    <color name="NotificationBar">#4f9c99</color>
+
+</resources>

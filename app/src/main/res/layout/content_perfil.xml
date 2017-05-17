@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_perfil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.PerfilActivity"
+    tools:showIn="@layout/activity_perfil"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="354dp"
+        android:layout_height="62dp">
+
+        <ImageView
+            app:srcCompat="@drawable/alert_circle_outline"
+            android:id="@+id/perfil_imgUsuario"
+            android:layout_width="76dp"
+            android:layout_height="63dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/perfil_txtNome" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/perfil_btnAmigo">
+
+                <Button
+                    android:text="ADD"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/perfil_btnAmigos"
+                    android:layout_width="70dp" />
+
+                <Button
+                    android:text="Seguir"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/perfil_btnSeguir"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="Pets"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/perfil_btnPets"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="opcoes"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/perfil_btnOpcoes"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="98dp">
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/perfil_lstPublicacao" />
+</LinearLayout>

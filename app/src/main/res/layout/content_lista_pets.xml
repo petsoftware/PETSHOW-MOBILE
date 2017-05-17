@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_lista_pets"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.ListaPetsActivity"
+    tools:showIn="@layout/activity_lista_pets"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/listaPets_layoutTab"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/listaPets_tabPets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/title_activity_lista_pets" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/listaPets_tabAdocao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblAdocao" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/listaPets_tabPerdido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lblMenuAchaPerdio" />
+
+
+    </android.support.design.widget.TabLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaPets_listAnimals"
+/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaPets_listPerdido"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaPets_listAdocao"
+        />
+
+
+</LinearLayout>
+

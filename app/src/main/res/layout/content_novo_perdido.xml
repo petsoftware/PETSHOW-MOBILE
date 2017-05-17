@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_novo_perdido"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.NovoPerdidoActivity"
+    tools:showIn="@layout/activity_novo_perdido"
+    android:orientation="vertical">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/novoPerdido_radioGroupTipo"
+        android:layout_marginLeft="30dp"
+        android:weightSum="1">
+
+        <RadioButton
+            android:text="@string/lblEncontrei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoPerdido_Achado"
+            android:layout_weight="0.25" />
+
+        <RadioButton
+            android:text="@string/lblPerdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoPerdido_Perdido"
+            />
+    </RadioGroup>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.03">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoPerdido_image1"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoPerdido_image2"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoPerdido_image3"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/lblInfEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblEstado"
+        android:layout_marginTop="18dp"
+        android:textSize="@dimen/NumberMediumTextSize" />
+
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblEstadoAtual"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spEstado"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:text="@string/lblinfCidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblCidade"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:textSize="@dimen/NumberMediumTextSize" />
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblCidadeAtual"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"
+        android:visibility="gone"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spCidade"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:visibility="gone"/>
+    <TextView
+        android:text="@string/lblInfBairro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblBairro"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:textSize="@dimen/NumberMediumTextSize" />
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblBairroAtual"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"
+        android:visibility="gone"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spBairro"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:visibility="gone"/>
+
+    <TextView
+        android:text="@string/lblInfTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtUsuario_lblTelefone"
+        android:layout_marginTop="@dimen/DistanciaEntreCamposM"
+        android:textSize="@dimen/NumberMediumTextSize" />
+
+    <br.com.petshow.view.util.PhoneEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/novoPerdido_txtTelefone" />
+
+    <TextView
+        android:text="@string/lblData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblData"
+        android:textSize="@dimen/NumberMediumTextSize"
+        android:paddingTop="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/novoPerdido_data"
+        android:paddingTop="5dp" />
+    <TextView
+        android:text="@string/lblTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblTipo"
+        android:textSize="@dimen/NumberMediumTextSize"
+        android:paddingTop="5dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spTiposAnimais"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:text="@string/lblRaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblRaca"
+        android:textSize="@dimen/NumberMediumTextSize"
+        android:paddingTop="5dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spRacas"
+        android:paddingTop="5dp" />
+
+
+
+    <TextView
+        android:text="@string/lblCorPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblCorPrincipal"
+        android:textSize="@dimen/NumberMediumTextSize"
+        android:paddingTop="5dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spCorPrincipal"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:text="@string/lblCorSegundaria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_lblCorSegundaria"
+        android:textSize="@dimen/NumberMediumTextSize"
+        android:paddingTop="5dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/novoPerdido_spCorSegundaria"
+        android:paddingTop="5dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/lblSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/novoPerdido_radioGroupSexo"
+            android:paddingTop="5dp">
+
+            <RadioButton
+                android:text="@string/lblMasculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/novoPerdido_rMacho"
+                />
+
+            <RadioButton
+                android:text="@string/lblFemea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/novoPerdido_rFemea"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/novoPerdido_descPerdidoEncontrado"
+        android:layout_weight="0.12"
+        android:lines="4"
+        android:maxLines="4"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:layout_marginTop="50dp"
+        android:hint="@string/lblDescPerdidoEncontrado" />
+
+
+
+
+</LinearLayout>
+    </ScrollView>

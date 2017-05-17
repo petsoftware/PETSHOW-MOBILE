@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.AppBarLayout
+android:layout_width="match_parent"
+android:layout_height="51dp"
+android:theme="@style/AppTheme.AppBarOverlay"
+android:background="@color/VerdeFundoPet"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_burst_mode"
+
+            android:id="@+id/bar_BtnHome"
+            android:background="@color/VerdeFundoPet"
+
+            android:layout_weight="1"
+
+            android:onClick="goToPrincipal"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_cat"
+
+            android:id="@+id/bar_BtnAnimal"
+            android:background="@color/VerdeFundoPet"
+
+            android:layout_weight="1"
+
+            android:onClick="goToListPets"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_message"
+
+            android:id="@+id/bar_btnMensagem"
+            android:background="@color/VerdeFundoPet"
+
+            android:layout_weight="1"
+
+            android:onClick="goToListMessages"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_alert_circle"
+
+            android:id="@+id/bar_btnAviso"
+            android:background="@color/VerdeFundoPet"
+
+            android:layout_weight="1"
+
+            android:onClick="goToListNotification"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+</android.support.design.widget.AppBarLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.MenuActivity"
+    tools:showIn="@layout/activity_menu"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <ImageView
+            android:layout_height="match_parent"
+            app:srcCompat="@color/BegieFundoPet"
+            android:id="@+id/imgProfileFacebook"
+            android:layout_width="match_parent"
+            android:layout_weight="2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtNome"
+            android:layout_weight="1"
+            android:textColor="@color/VerdeFundoPet"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:id="@+id/btnSetaRetorno"
+            android:layout_weight="2"
+            android:background="@color/BegieFundoPet"
+            android:onClick="close" />
+
+    </LinearLayout>
+
+    <Button
+        android:text="@string/lblEditarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEditarPerfil"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:elevation="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="goToEditProfile" />
+
+    <Button
+        android:text="@string/lblMeuPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMeusPets"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp"
+        android:onClick="gotoListPets" />
+    <Button
+        android:text="@string/lblAmigos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAmigos"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp"
+        android:onClick="goToFriends" />/>
+    <Button
+        android:text="@string/lblAdocao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdocao"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp" />
+    <Button
+        android:text="@string/lblAchadosPerdidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAchados"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp" />
+
+    <Button
+        android:text="@string/lblDicasAdestramento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDicasAdestramento"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp" />
+
+    <Button
+        android:onClick="logout"
+        android:text="@string/lblSair"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogout"
+        android:background="@drawable/border_button"
+        android:textColor="@color/cardview_light_background"
+        android:layout_margin="5dp" />
+
+
+</LinearLayout>

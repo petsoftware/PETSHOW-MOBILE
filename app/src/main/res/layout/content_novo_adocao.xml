@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_novo_adocao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.NovoAdocaoActivity"
+    tools:showIn="@layout/activity_novo_adocao"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoAdocao_image1"
+            android:layout_weight="1"
+            android:layout_height="70dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoAdocao_image2"
+            android:layout_weight="1"
+            android:layout_height="70dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/perfil_no_photo"
+            android:id="@+id/novoAdocao_image3"
+            android:layout_weight="1"
+            android:layout_height="70dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView9"
+            android:textSize="@dimen/NumberMediumTextSize"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_spTiposAnimais"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblRaca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView6"
+            android:textSize="@dimen/NumberMediumTextSize"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_spRacas"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblIdade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView62"
+            android:textSize="@dimen/NumberMediumTextSize"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_spFaixaIdade"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblPorte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView623"
+            android:textSize="@dimen/NumberMediumTextSize"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_spPorte"
+            android:paddingTop="5dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/lblSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/novoAdocao_radioGroupSexo"
+            android:paddingTop="5dp">
+
+            <RadioButton
+                android:text="@string/lblMasculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/novoAdocao_rMacho"
+                />
+
+            <RadioButton
+                android:text="@string/lblFemea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/novoAdocao_rFemea"
+                 />
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblCastrado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView2"
+            android:layout_weight="1.16" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_swCastrado"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblVacinado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView3"
+            android:layout_weight="1" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_swVacinado"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.62">
+
+        <TextView
+            android:text="@string/lblVermifugado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_textView5"
+            android:layout_weight="1" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/novoAdocao_swVermifugado"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:text="@string/lblInfTelefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2" />
+
+        <br.com.petshow.view.util.PhoneEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/novoAdocao_txtTelefone" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/novoAdocao_edtMensagem"
+        android:layout_weight="0.62"
+
+        android:lines="4"
+        android:maxLines="4"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:layout_marginTop="50dp"
+        android:hint="@string/lblSobreAnimal" />
+
+</LinearLayout>
+</ScrollView>

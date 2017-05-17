@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:layout_width="103dp"
+        android:layout_height="97dp"
+        android:id="@+id/itemNotificacao_imgFoto"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:weightSum="1"
+        android:layout_height="97dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/itemNotificacao_txtMensagem"
+            android:text="O banho da lisa já foi termrinado! Já está pronta pra ser entregue."
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="80dp"
+            android:textAlignment="center"
+            android:paddingEnd="15dp" />
+
+        <TextView
+            android:text="09/04/2017 as 19:30"
+            android:layout_width="match_parent"
+            android:id="@+id/itemNotificacao_txtData"
+            android:layout_weight="0.35"
+            android:textAlignment="textEnd"
+            android:layout_height="17dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

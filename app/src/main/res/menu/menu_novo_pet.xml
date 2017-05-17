@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+    <item
+        android:id="@+id/menu_novo_ped_salvar"
+        android:orderInCategory="100"
+        android:title="@string/lblSalvar"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_novo_ped_salvar2"
+        android:orderInCategory="100"
+        android:title="@string/lblAchadosPerdidos"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_novo_ped_salvar3"
+        android:orderInCategory="100"
+        android:title="@string/lblAchadosPerdidos"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_cat"
+        />
+
+
+</menu>

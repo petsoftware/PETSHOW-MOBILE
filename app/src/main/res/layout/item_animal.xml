@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:layout_width="91dp"
+        android:layout_height="73dp"
+        android:id="@+id/itemAnimal_imgPerfil"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"  android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemAnimal_txtNome"
+            android:text="LISA"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <TextView
+            android:text="Raça:PITBULL"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemAnimal_txtRaca"
+            android:padding="10dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        app:srcCompat="@color/NotificationBar"
+        android:id="@+id/itemAnimal_imgAviso"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+</LinearLayout>
