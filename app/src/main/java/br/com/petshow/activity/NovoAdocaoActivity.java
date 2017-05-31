@@ -7,13 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -29,24 +26,25 @@ import com.facebook.Profile;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import br.com.petshow.R;
 import br.com.petshow.adapters.RacaAdapterToArray;
+import br.com.petshow.enums.EnumCor;
 import br.com.petshow.enums.EnumFaseVida;
+import br.com.petshow.enums.EnumPorteAnimal;
 import br.com.petshow.enums.EnumTipoAnimal;
 import br.com.petshow.model.Adocao;
-import br.com.petshow.model.Animal;
-import br.com.petshow.model.Tutor;
+import br.com.petshow.model.Estado;
 import br.com.petshow.model.Usuario;
 import br.com.petshow.util.AtributosUtil;
-import br.com.petshow.util.DateUtils;
 import br.com.petshow.util.FacebookUtil;
 import br.com.petshow.util.ImagemUtil;
 import br.com.petshow.util.JsonUtil;
 import br.com.petshow.util.MapErroRetornoRest;
+import br.com.petshow.util.ValidationAndroidUtil;
+import br.com.petshow.util.ValidationUtil;
 import br.com.petshow.view.util.CriationUtil;
 import br.com.petshow.view.util.MenuUtil;
 import br.com.petshow.view.util.MessageUtil;
@@ -81,14 +79,24 @@ public class NovoAdocaoActivity extends PetActivity {
     RadioGroup radioGroupSexo;
     List<String> fotos;
     Adocao adocao;
+    int chamadaChangeRestTipo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadVariablesExternal();
         setContentView(R.layout.activity_novo_adocao);
         startComponents();
         startVariables();
-        loadSpinners();
+
+
+        if(adocao!=null  && adocao.getId()>0) {
+            loadAnimal();
+        }else{
+            loadSpinners(null,true);
+
+        }
     }
 
     public void startVariables(){
@@ -97,6 +105,7 @@ public class NovoAdocaoActivity extends PetActivity {
         adocao= adocao==null?new Adocao():adocao;
 
     }
+
 
     public void startComponents() {
 
@@ -125,7 +134,10 @@ public class NovoAdocaoActivity extends PetActivity {
         imageAnimal1.setOnClickListener(new NovoAdocaoActivity.ChangePictureListener());
         imageAnimal2.setOnClickListener(new NovoAdocaoActivity.ChangePictureListener());
         imageAnimal3.setOnClickListener(new NovoAdocaoActivity.ChangePictureListener());
-        fotos = new ArrayList<String>();
+        fotos = fotos==null?new ArrayList<String>():fotos;
+
+        spPorte.setAdapter(new ArrayAdapter<EnumPorteAnimal>(this, android.R.layout.simple_list_item_1, EnumPorteAnimal.values()));
+        spTiposAnimais.setOnItemSelectedListener(new NovoAdocaoActivity.TipoListeners());
     }
 
 
@@ -154,7 +166,7 @@ public class NovoAdocaoActivity extends PetActivity {
             return true;
         }
         if (id == 1) {
-            salvar();
+            onClickSalvar();
             return true;
         }
         if (id == 3) {
@@ -171,7 +183,7 @@ public class NovoAdocaoActivity extends PetActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadSpinners(){
+    private void loadSpinners(String tipo,boolean isCode){
 
         new RequestListObjects(new CallBack(this) {
 
@@ -183,8 +195,20 @@ public class NovoAdocaoActivity extends PetActivity {
 
                     lista.add(0, getContext().getString(R.string.selAnimal));
 
+
                     CriationUtil.createArrayAdapter(this.getContext(),spTiposAnimais, lista);
-                    loadAnimal();
+
+                    if(tipo !=null){
+                        for(int i=0;lista.size() >i;++i){
+
+                            if(lista.get(i).equals(tipo)){
+                                spTiposAnimais.setSelection(i);
+                                if(isCode)++chamadaChangeRestTipo;
+                                break;
+                            }
+                        }
+
+                    }
 
                 } catch (Exception e) {
                     MessageUtil.messageErro(getContext(),e.getMessage());
@@ -297,21 +321,26 @@ public class NovoAdocaoActivity extends PetActivity {
 
     }
 
-    private class RacaListeners implements AdapterView.OnItemSelectedListener {
+    private class TipoListeners implements AdapterView.OnItemSelectedListener {
 
 
-        public RacaListeners(){
+        public  TipoListeners(){
 
         }
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            if(position>0) {
-                loadSpinnerRaca((String) parent.getItemAtPosition(position),null);
-            }else{
-                loadCleanListRacas();
-            }
 
+            if(chamadaChangeRestTipo==0) {
+                if(position>0) {
+                    loadSpinnerRaca((String) parent.getItemAtPosition(position),null);
+                }else{
+                    loadCleanListRacas();
+                }
+            }else{
+                --chamadaChangeRestTipo;
+            }
         }
+
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
@@ -339,8 +368,7 @@ public class NovoAdocaoActivity extends PetActivity {
                         }
 
                     }
-                    // colocado neste local para evitar conflito com o metodo loadAnimal
-                    spTiposAnimais.setOnItemSelectedListener(new NovoAdocaoActivity.RacaListeners());
+
 
                 } catch (Exception e) {
                     MessageUtil.messageErro(this.getContext(),e.getMessage());
@@ -381,13 +409,13 @@ public class NovoAdocaoActivity extends PetActivity {
     }
 
     private String getValueRadioSexo(){
+        String retorno="";
         if(radioMaxo.isChecked()){
-            return "M";
+            retorno="M";
         }else if(radioFemea.isChecked()){
-            return "F";
-        }else{
-            return "";
+            retorno="F";
         }
+        return retorno;
     }
 
     private void setValueRadioSexo(String value){
@@ -399,18 +427,52 @@ public class NovoAdocaoActivity extends PetActivity {
 
     }
 
-    public void loadAnimal(){
-        Bundle bundle= getIntent().getExtras();
-        if(bundle != null && bundle.containsKey(AtributosUtil.PAR_ANIMAL)){
+    private void setSpinnerCor(Spinner sp,int id,String desc){
+        Adapter adapter = sp.getAdapter();
+        int n = adapter.getCount();
+        for (int i = 0; i < n; i++) {
+            try {
+                EnumCor enume = (EnumCor) adapter.getItem(i);
+                if(enume.getId()== id && desc.equals(enume.toString())){
+                    sp.setSelection(i);
+                }
+            }catch (ClassCastException ex){
+
+            }
 
 
-
-
-
-        }else {
-            // colocado neste local para evitar conflito com o metodo loadAnimal
-            spTiposAnimais.setOnItemSelectedListener(new NovoAdocaoActivity.RacaListeners());
         }
+
+    }
+
+    public void loadAnimal(){
+
+           // spTiposAnimais.setSelection(adocao.getTipo().getId() + 1);
+           // spFaixaIdade.setSelection(adocao.getFase().getId()+1);
+           // spPorte.setSelection(adocao.getPorteAnimal().getId()+1);
+            setValueRadioSexo(adocao.getFlSexo());
+            swCastrado.setChecked(adocao.isCastrado());
+            swVacinado.setChecked(adocao.isFlVacinado());
+            swVermifugado.setChecked(adocao.isFlVermifugado());
+            txtTelefone.setText(adocao.getDddCelular()+""+adocao.getTelefoneCelular());
+            txtaEdtMensagem.setText(adocao.getDescAdocao());
+
+            this.fotos=adocao.getFotos();
+            if(fotos!=null && fotos.size()>0){
+                imageAnimal1.setImageBitmap(ImagemUtil.transformBase64Bitmap(fotos.get(0)));
+                if(fotos.size()>1){
+                    imageAnimal2.setImageBitmap(ImagemUtil.transformBase64Bitmap(fotos.get(1)));
+                    if(fotos.size()>2){
+                        imageAnimal3.setImageBitmap(ImagemUtil.transformBase64Bitmap(fotos.get(2)));
+                    }
+                }
+            }
+           // loadSpinners(adocao.getTipo().toString(),true);
+            //loadSpinnerRaca(adocao.getTipo().toString(),adocao.getRaca());
+
+
+
+
     }
 
     private void salvar(){
@@ -428,8 +490,9 @@ public class NovoAdocaoActivity extends PetActivity {
         adocao.setTelefoneCelular(Long.parseLong(txtTelefone.getText().toString().substring(4,15).trim().replace("-","")));
         adocao.setFotos(fotos);
         adocao.setDataCadastro(new Date());
+        adocao.setPorteAnimal(EnumPorteAnimal.getEnum(spPorte.getSelectedItem().toString()));
         adocao.setUsuario(usuarioLogado);
-           // faltando fotos
+
 
             new RequestPostEntity(new CallBack(this) {
 
@@ -461,7 +524,7 @@ public class NovoAdocaoActivity extends PetActivity {
 
         CriationUtil.openProgressBar(progressDialog);
 
-        // faltando fotos
+
 
         new RequestDelete(new CallBack(this) {
 
@@ -524,10 +587,65 @@ public class NovoAdocaoActivity extends PetActivity {
 
     public void loadVariablesExternal(){
         Bundle bundle= getIntent().getExtras();
-        if(bundle != null && bundle.containsKey(AtributosUtil.PAR_ANIMAL)) {
-            adocao = (Adocao) bundle.getSerializable(AtributosUtil.PAR_ANIMAL);
+        if(bundle != null && bundle.containsKey(AtributosUtil.PAR_ADOCAO)) {
+            adocao = (Adocao) bundle.getSerializable(AtributosUtil.PAR_ADOCAO);
         }
     }
 
+    public void onClickSalvar(){
+
+            if(adocao !=null && adocao.getDataAdocao() !=null){
+                MessageUtil.messageWarning(this, this.getString(R.string.validacaoAnimalJaAdotado));
+                return;
+            }
+
+            if (spTiposAnimais.getSelectedItemPosition() == 0) {
+                MessageUtil.messageWarning(this, this.getString(R.string.validacaoTipo));
+                //ValidationAndroidUtil.setFocus(this,spEstado);
+
+            }
+            if (spFaixaIdade.getSelectedItemPosition() == 0) {
+                MessageUtil.messageWarning(this, this.getString(R.string.validacaoFaixaIdade));
+                // ValidationAndroidUtil.setFocus(this,spBairro);
+                return;
+            }
+
+            if (!ValidationUtil.isCampoComValor(getValueRadioSexo())) {
+                MessageUtil.messageWarning(this, this.getString(R.string.validacaoSexo));
+                // ValidationAndroidUtil.setFocus(this,spBairro);
+                return;
+            }
+            if (!ValidationUtil.isCampoComValor(txtaEdtMensagem.getText().toString())) {
+                MessageUtil.messageWarning(this, this.getString(R.string.validacaoDescAdocao));
+                // ValidationAndroidUtil.setFocus(this,spBairro);
+                return;
+            }
+
+
+        if(txtTelefone.getText().toString().length() != 15 && txtTelefone.getText().toString().replace("(","").replace(")","").replace("-","").trim().length()!=0){
+            MessageUtil.messageWarning(this, this.getString(R.string.validacaoTelefone));
+            // ValidationAndroidUtil.setFocus(this,txtTelefone);
+            return;
+        }
+
+
+
+
+        salvar();
+
+
+    }
+
+    public void onClickExcluir(){
+        excluir();
+    }
+    public void onClickAdotar(){
+        if(adocao !=null && adocao.getDataAdocao() !=null){
+            MessageUtil.messageWarning(this, this.getString(R.string.validacaoAnimalJaAdotado));
+            return;
+        }
+
+        adotado();
+    }
 
 }

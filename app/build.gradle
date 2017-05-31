@@ -16,9 +16,9 @@ android {
 
         vectorDrawables.useSupportLibrary = true
     }
-    dexOptions{
-        maxProcessCount=2
-        javaMaxHeapSize="2g"
+    dexOptions {
+        maxProcessCount = 2
+        javaMaxHeapSize = "2g"
     }
     buildTypes {
         release {
@@ -31,7 +31,7 @@ android {
 
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/ASL2.0'
- 
+
 
     }
 
@@ -68,5 +68,6 @@ dependencies {
 
 
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support.constraint:constraint-layout:+'
 }
 apply plugin: 'com.google.gms.google-services'

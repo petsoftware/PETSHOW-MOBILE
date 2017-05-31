@@ -9,7 +9,7 @@ import android.widget.Spinner;
  * Created by bruno on 19/03/2017.
  */
 
-public class ValidationUtil {
+public class ValidationAndroidUtil {
 
     public static void setFocus(Context context,Object component){
         setFocus(context, component,true);

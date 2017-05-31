@@ -26,7 +26,20 @@
     <string name="selEstado">Selecione um estado</string>
     <string name="selCidade">Selecione uma cidade</string>
     <string name="selBairro">Selecione um bairro</string>
+    <string name="selAnimal">Selecione o animal</string>
+    <string name="selTipo">Selecione o animal</string>
+    <string name="selIdade">Selecione a idade</string>
+    <string name="selPorte">Selecione o porte</string>
+
+    <string name="validacaoAnimalEntreguePerdido">Animal Já foi entregue ao dono não pode ser alterado!</string>
+    <string name="validacaoDataPerdidoAchado">Prencha o campo Data</string>
     <string name="validacaoTelefone">Prencha o campo Telefone Ex:(99) 99999-9999</string>
+    <string name="validacaoTipo">Prencha o campo tipo de animal</string>
+    <string name="validacaoFaixaIdade">Prencha o campo Idade</string>
+    <string name="validacaoSexo">Informe o sexo do animal</string>
+    <string name="validacaoDescAdocao">Informe as informações gerais da adoção</string>
+    <string name="validacaoDescPerdido">Informe as informações gerais do acontecimento</string>
+    <string name="validacaoAnimalJaAdotado">Animal não pode ser alterado pois já foi adotado!</string>
     <string name="msgPadraoProgressDialog">Carregando</string>
     <string name="title_activity_lista_pets">Pets</string>
     <string name="lblAdicionarPet">Adicionar Pet</string>
@@ -42,11 +55,15 @@
     <string name="lblCancelar">Cancelar</string>
     <string name="title_modal_tipo_cadastro_animal">O CADASTRO:</string>
     <string name="title_modal_tipo_get_photo">Fonte</string>
-    <string name="selAnimal">Selecione o animal</string>
+
     <string name="selRaca">Selecione a raça</string>
     <string name="selFoto">Selecione uma foto</string>
     <string name="sucessPetAdd">Pet Cadastrado!</string>
     <string name="sucessPetExcluir">Pet Excluido!</string>
+    <string name="sucessVacinaAdd">Vacina Cadastrado!</string>
+    <string name="sucessVacinaExcluir">Vacina Excluido!</string>
+    <string name="sucessTratamentoAdd">Tratamento Cadastrado!</string>
+    <string name="sucessTratamentoExcluir">Tratamento Excluido!</string>
     <string name="msgUserNotFriend">Usuario nao é seu amigo!</string>
     <string name="erroLoginNovamente">"Ocorreu um erro! Favor fazer o login novamente!"</string>
     <string name="erroLoginOutroCelular">"Foi feito um login com esta conta em outro celular!"</string>
@@ -59,8 +76,16 @@
     <string name="lblExcluir">Excluir</string>
     <string name="lblPorte">Porte</string>
     <string name="lblAdotado">Foi adotado</string>
+    <string name="lblEncontradoDevolvido">Foi Encontrado/Devolvido</string>
     <string name="lblAguarAdotacao">Aguardando adoção</string>
     <string name="lblJaAdotado">Adotado</string>
+    <string name="lblCadastradoPor">Cadastrado por:</string>
+    <string name="lblvoce">Você</string>
+    <string name="lblFrequencia">Frequência</string>
+    <string name="menuVacina">Vacinas</string>
+    <string name="menuTratamento">Tratamentos</string>
+    <string name="menuVermifugo">Vermifugos</string>
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -144,11 +169,23 @@
     <string name="title_activity_amigo">Amigos</string>
     <string name="title_activity_perfil">PerfilActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_novo_perdido">NovoPerdidoActivity</string>
+    <string name="title_activity_novo_perdido">Pet Desaparecido</string>
     <string name="title_activity_novo_adocao">NovoAdocaoActivity</string>
     <string name="lblIdade">Idade</string>
     <string name="lblSobreAnimal">Fale sobre o animal</string>
     <string name="lblDescAcontecimento" />
     <string name="lblMenuAchaPerdio">Acha Perdido??</string>
+    <string name="title_activity_vacina">VacinaActivity</string>
+    <string name="title_activity_edt_vacina">EdtVacinaActivity</string>
+    <string name="title_activity_edt_tratamento">EdtTratamentoActivity</string>
+    <string name="title_activity_edt_vermifugo">EdtVermifugoActivity</string>
+    <string name="title_activity_lista_tratamento">ListaTratamentoActivity</string>
+    <string name="title_activity_lista_vermifugo">ListaVermifugoActivity</string>
+    <string name="title_activity_lista_vacina">ListaVacinaActivity</string>
+    <string name="lblDataAplicacao">Data Aplicação</string>
+    <string name="lblAplicada">Aplicada</string>
+    <string name="lblDataPrevisao">Data Previsão</string>
+    <string name="lblAte">até</string>
+    <string name="lblTratamento" >Tratamento</string>
 
 </resources>

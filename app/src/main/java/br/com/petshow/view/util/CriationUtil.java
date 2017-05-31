@@ -16,8 +16,7 @@ public class CriationUtil {
 
 
     public static <T> ArrayAdapter<T> createArrayAdapter(Context ctx, Spinner spinner, List<T> data){
-        EnumTipoAnimal en ;
-        EnumTipoAnimal.values();
+
         return createArrayAdapter( ctx,  spinner,  data,android.R.layout.simple_spinner_item, android.R.layout.simple_spinner_dropdown_item);
     }
 

@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 import br.com.petshow.R;
 import br.com.petshow.activity.PetActivity;
 import br.com.petshow.model.Animal;
@@ -57,8 +59,8 @@ public class PerdidoArrayAdapterListaPets extends ArrayAdapter<Perdido> {
 
         Perdido animal = getItem(position);
 
-        viewHolder.itemAnimal_txtNome.setText(animal.getFlAcontecimento().equals("A")? Resources.getSystem().getString(R.string.lblEncontrei):Resources.getSystem().getString(R.string.lblPerdi));
-        viewHolder.itemAnimal_txtRaca.setText(animal.getRaca());
+        viewHolder.itemAnimal_txtNome.setText(animal.getFlAcontecimento().equals("A")? context.getResources().getString(R.string.lblEncontrei):context.getResources().getString(R.string.lblPerdi));
+        viewHolder.itemAnimal_txtRaca.setText(new SimpleDateFormat("dd/MM/yyyy").format(animal.getDtPerdidoAchado()));
         if(animal.getFotos() != null && animal.getFotos().size()>0) {
             viewHolder.itemAnimal_imgFoto.setImageBitmap(ImagemUtil.transformBase64Bitmap(animal.getFotos().get(0)));
         }else{

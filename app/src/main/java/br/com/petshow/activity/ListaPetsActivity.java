@@ -53,6 +53,7 @@ public class ListaPetsActivity extends PetActivity{
 
 
     TabLayout tabLayout;
+    int indexLayoutEscolhido;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -222,7 +223,7 @@ public class ListaPetsActivity extends PetActivity{
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 alterarTab(tab.getPosition());
-
+                indexLayoutEscolhido=tab.getPosition();
             }
 
             @Override
@@ -317,7 +318,15 @@ public class ListaPetsActivity extends PetActivity{
     }
 
     protected  void onActivityResult(int requestCode, int resultCode, Intent data){
-        loadListAnimals();
+        if(indexLayoutEscolhido==0) {
+            loadListAnimals();
+        }else if (indexLayoutEscolhido==1){
+            loadListAdocao();
+        }else if(indexLayoutEscolhido==2){
+            loadListPerdido();
+        }
+
+
     }
 
     public class ListaAdocaoListeners implements AdapterView.OnItemClickListener{

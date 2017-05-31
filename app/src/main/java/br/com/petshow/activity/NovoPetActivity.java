@@ -1,20 +1,14 @@
 package br.com.petshow.activity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +27,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import br.com.petshow.R;
@@ -43,7 +36,7 @@ import br.com.petshow.model.Animal;
 import br.com.petshow.model.Tutor;
 import br.com.petshow.model.Usuario;
 import br.com.petshow.util.AtributosUtil;
-import br.com.petshow.util.DateUtils;
+import br.com.petshow.util.DateUtilsAndroid;
 import br.com.petshow.util.FacebookUtil;
 import br.com.petshow.util.ImagemUtil;
 import br.com.petshow.util.JsonUtil;
@@ -74,6 +67,8 @@ public class NovoPetActivity extends PetActivity {
     Spinner spRaca;
     EditText txtDataNascimento;
 
+    int chamadaChangeRestTipo;
+
     Animal animal;
     Tutor tutor;
 
@@ -87,8 +82,14 @@ public class NovoPetActivity extends PetActivity {
         setTitle(this.getString(R.string.title_activity_novo_pet));
         startComponents();
         startVariables();
-        loadSpinners();
-        loadAnimal();
+
+        if(animal !=null && animal.getId()>0){
+            loadAnimal();
+        }else{
+            loadSpinners(null,true);
+        }
+
+
 
 
 
@@ -115,15 +116,14 @@ public class NovoPetActivity extends PetActivity {
         spRaca = (Spinner) findViewById(R.id.novoPet_spRacas);
         radioGroupSexo=(RadioGroup) findViewById(R.id.radioGroupSexo);
 
-        //loadSpinners();
-
-
         ExibeDataListener exibeDataListener =new ExibeDataListener();
         txtDataNascimento.setOnClickListener(exibeDataListener);
         txtDataNascimento.setOnFocusChangeListener(exibeDataListener);
+
         imgPicture=(ImageView) findViewById(R.id.novoPet_imageProfile);
         imgPicture.setImageResource(R.drawable.perfil_no_photo);
         imgPicture.setOnClickListener(new ChangePictureListener());
+        spTpAnimal.setOnItemSelectedListener(new NovoPetActivity.RacaListeners());
 
     }
 
@@ -132,9 +132,18 @@ public class NovoPetActivity extends PetActivity {
 
         MenuItem itemMenu= menu.add(0,1,1,getString(R.string.lblSalvar)); //   (int groupId,        int itemId,        int order,        int titleRes)
         itemMenu.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-       if(animal !=null && animal.getId()>0) {
-           MenuItem itemExcluir = menu.add(0, 2, 2, getString(R.string.lblExcluir)); //   (int groupId,        int itemId,        int order,        int titleRes)
+        if(animal !=null && animal.getId()>0) {
+           MenuItem itemExcluir = menu.add(0, 2, 5, getString(R.string.lblExcluir)); //   (int groupId,        int itemId,        int order,        int titleRes)
            itemExcluir.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+            MenuItem itemVacina = menu.add(0, 3, 2, getString(R.string.menuVacina)); //   (int groupId,        int itemId,        int order,        int titleRes)
+            itemVacina.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+            MenuItem itemVermifugo = menu.add(0, 4, 3, getString(R.string.menuVermifugo)); //   (int groupId,        int itemId,        int order,        int titleRes)
+            itemVermifugo.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+            MenuItem itemTratamento = menu.add(0, 5, 4, getString(R.string.menuTratamento)); //   (int groupId,        int itemId,        int order,        int titleRes)
+            itemTratamento.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
        }
 
         return super.onCreateOptionsMenu(menu);
@@ -156,10 +165,40 @@ public class NovoPetActivity extends PetActivity {
             excluir();
             return true;
         }
+        if (id == 3) {
+            goToVacina();
+            return true;
+        }
+        if (id == 4) {
+            goToVermifugo();
+            return true;
+        }
+        if (id == 5) {
+            goToTratamento();
+            return true;
+        }
 
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToTratamento() {
+        Intent it = new Intent(this,ListaTratamentoActivity.class);
+        it.putExtra(AtributosUtil.PAR_ANIMAL,animal);
+        startActivityForResult(it,AtributosUtil.INTENT_NOVO_TRATAMENTO);
+    }
+
+    private void goToVermifugo() {
+        Intent it = new Intent(this,ListaVermifugoActivity.class);
+        it.putExtra(AtributosUtil.PAR_ANIMAL,animal);
+        startActivityForResult(it,AtributosUtil.INTENT_NOVO_VERMIFUGO);
+    }
+
+    private void goToVacina() {
+        Intent it = new Intent(this,ListaVacinaActivity.class);
+        it.putExtra(AtributosUtil.PAR_ANIMAL,animal);
+        startActivityForResult(it,AtributosUtil.INTENT_NOVO_VACINA);
     }
 
 
@@ -230,7 +269,6 @@ public class NovoPetActivity extends PetActivity {
                     Bitmap bitmap = (Bitmap) bundle.get("data");
                     imgPicture.setImageBitmap(bitmap);
                     animal.setFotoPerfil(ImagemUtil.transformBase64AsString(bitmap));
-                    String baassarateasssaggfdaraaaffaaaaggtaqaa="";
 
                 }else {
 
@@ -250,10 +288,11 @@ public class NovoPetActivity extends PetActivity {
         animal.setTipo(EnumTipoAnimal.getEnum(spTpAnimal.getSelectedItem().toString()));
         animal.setRaca(spRaca.getSelectedItem().toString());
 
-        tutor.setAnimal(animal);
-        tutor.setDonoAtual(true);
-        tutor.setUsuario(usuarioLogado);
-
+        if(animal.getId()==0) {
+            tutor.setAnimal(animal);
+            tutor.setDonoAtual(true);
+            tutor.setUsuario(usuarioLogado);
+        }
 
         if(animal.getId()==0) {
             CriationUtil.openProgressBar(progressDialog);
@@ -360,7 +399,7 @@ public class NovoPetActivity extends PetActivity {
 
 
 
-    private void loadSpinners(){
+    private void loadSpinners(String tipo,boolean isCodeLoadTipo){
 
         new RequestListObjects(new CallBack(this) {
 
@@ -373,7 +412,19 @@ public class NovoPetActivity extends PetActivity {
                     lista.add(0, getContext().getString(R.string.selAnimal));
 
                     CriationUtil.createArrayAdapter(this.getContext(),spTpAnimal, lista);
-                    loadAnimal();
+                    if(tipo !=null){
+                        for(int i=0;lista.size() >i;++i){
+
+                            if(lista.get(i).equals(tipo)){
+                                spTpAnimal.setSelection(i);
+                                if(isCodeLoadTipo)++chamadaChangeRestTipo;
+                                break;
+                            }
+                        }
+
+                    }
+
+
 
                 } catch (Exception e) {
                     MessageUtil.messageErro(getContext(),e.getMessage());
@@ -396,10 +447,14 @@ public class NovoPetActivity extends PetActivity {
         }
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            if(position>0) {
-                loadSpinnerRaca((String) parent.getItemAtPosition(position),null);
-            }else{
-                loadCleanListRacas();
+           if(chamadaChangeRestTipo==0) {
+               if (position > 0) {
+                   loadSpinnerRaca((String) parent.getItemAtPosition(position), null);
+               } else {
+                   loadCleanListRacas();
+               }
+           }else{
+               --chamadaChangeRestTipo;
             }
 
         }
@@ -430,8 +485,7 @@ public class NovoPetActivity extends PetActivity {
                         }
 
                     }
-                    // colocado neste local para evitar conflito com o metodo loadAnimal
-                    spTpAnimal.setOnItemSelectedListener(new NovoPetActivity.RacaListeners());
+
 
                 } catch (Exception e) {
                     MessageUtil.messageErro(this.getContext(),e.getMessage());
@@ -500,9 +554,9 @@ public class NovoPetActivity extends PetActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-            String dt = DateUtils.dateToString( year,  month,  dayOfMonth);
+            String dt = DateUtilsAndroid.dateToString( year,  month,  dayOfMonth);
             txtDataNascimento.setText(dt);
-            animal.setDataNascimento(DateUtils.getDate(year,  month,  dayOfMonth));
+            animal.setDataNascimento(DateUtilsAndroid.getDate(year,  month,  dayOfMonth));
 
         }
     }
@@ -532,12 +586,10 @@ public class NovoPetActivity extends PetActivity {
 
     public void loadAnimal(){
 
-        if(animal !=null && animal.getId()>0){
-
 
             txtNome.setText(animal.getNome());
             setValueRadioSexo(animal.getFlSexo());
-            spTpAnimal.setSelection(animal.getTipo().getId()+1);
+            spTpAnimal.setSelection(animal.getTipo().getId());
             spTpAnimal.setEnabled(false);
             if(animal.getFotoPerfil() != null) {
                 imgPicture.setImageBitmap(ImagemUtil.transformBase64Bitmap(animal.getFotoPerfil()));
@@ -546,19 +598,16 @@ public class NovoPetActivity extends PetActivity {
 
             Calendar cal = Calendar.getInstance();
             cal.setTime(animal.getDataNascimento());
-            String dt = DateUtils.dateToString(  cal.get(Calendar.YEAR),  cal.get(Calendar.MONTH),  cal.get(Calendar.DAY_OF_MONTH));
+            String dt = DateUtilsAndroid.dateToString(  cal.get(Calendar.YEAR),  cal.get(Calendar.MONTH),  cal.get(Calendar.DAY_OF_MONTH));
             txtDataNascimento.setText(dt);
-
+            loadSpinners(animal.getTipo().toString(),true);
             loadSpinnerRaca(animal.getTipo().toString(),animal.getRaca());
 
 
 
 
 
-        }else {
-            // colocado neste local para evitar conflito com o metodo loadAnimal
-            spTpAnimal.setOnItemSelectedListener(new NovoPetActivity.RacaListeners());
-        }
+
     }
 
 

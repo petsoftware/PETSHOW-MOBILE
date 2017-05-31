@@ -103,6 +103,30 @@
         <activity
             android:name=".activity.NovoAdocaoActivity"
             android:label="@string/title_activity_novo_adocao"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EdtVacinaActivity"
+            android:label="@string/title_activity_edt_vacina"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EdtTratamentoActivity"
+            android:label="@string/title_activity_edt_tratamento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EdtVermifugoActivity"
+            android:label="@string/title_activity_edt_vermifugo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ListaTratamentoActivity"
+            android:label="@string/title_activity_lista_tratamento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ListaVermifugoActivity"
+            android:label="@string/title_activity_lista_vermifugo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ListaVacinaActivity"
+            android:label="@string/title_activity_lista_vacina"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

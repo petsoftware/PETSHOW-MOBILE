@@ -111,7 +111,7 @@ public class FacebookUtil {
             usuario = new Usuario();
             usuario.setNome(nome);
             usuario.setIdFacebook(idFacebook);
-            usuario.setFlTpEstabelecimento("F");
+           // usuario.setFlTpEstabelecimento(null);
             usuario.setEmail(email);
             usuario.setFlPreCadastro(false);
             usuario.setEmail("semEmail@hotmail.com");
@@ -247,7 +247,7 @@ public class FacebookUtil {
             usuario = new Usuario();
             usuario.setNome(nome);
             usuario.setIdFacebook(idFacebook);
-            usuario.setFlTpEstabelecimento("F");
+            //usuario.setFlTpEstabelecimento(null);// futuro
             usuario.setEmail(email);
             usuario.setFlPreCadastro(false);
             usuario.setEmail("semEmail@hotmail.com");

@@ -18,6 +18,9 @@ public class AtributosUtil {
     public static final int INTENT_PERFIL  = 10005;
     public static final int INTENT_NOVO_ADOCAO  = 10006;
     public static final int INTENT_NOVO_PERDIDO  = 10007;
+    public static final int INTENT_NOVO_VACINA  = 10008;
+    public static final int INTENT_NOVO_TRATAMENTO  = 10009;
+    public static final int INTENT_NOVO_VERMIFUGO  = 10010;
 
     // Acess
     public static final List<String> FACEBOOK_ACESS = Arrays.asList("email","public_profile","user_friends");
@@ -33,6 +36,9 @@ public class AtributosUtil {
     public static final String  PAR_USUARIO_WITH_ANIMALS="USUARIO_WITH_ANIMALS";
     public static final String PAR_ADOCAO="PARAMETRO_ADOCAO";
     public static final String PAR_PERDIDO="PARAMETRO_PERDIDO";
+    public static final String PAR_VACINA="PARAMETRO_VACINA";
+    public static final String PAR_TRATAMENTO="PARAMETRO_TRATAMENTO";
+    public static final String PAR_VERMIFUGO="PARAMETRO_VERMIFUGO";
 
     public static final String URL_BASE= "http://192.168.1.5:8080/Petshow-REST/rest/";
 

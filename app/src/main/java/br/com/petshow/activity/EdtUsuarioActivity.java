@@ -14,8 +14,6 @@ import android.view.View;
 
 import android.widget.AdapterView;
 
-import android.widget.Button;
-
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,8 +38,6 @@ import br.com.petshow.model.Usuario;
 import br.com.petshow.util.FacebookUtil;
 import br.com.petshow.util.JsonUtil;
 import br.com.petshow.util.MapErroRetornoRest;
-import br.com.petshow.util.MensagemUtil;
-import br.com.petshow.util.ValidationUtil;
 import br.com.petshow.view.util.CriationUtil;
 import br.com.petshow.view.util.MenuUtil;
 import br.com.petshow.view.util.MessageUtil;
@@ -344,24 +340,24 @@ public class EdtUsuarioActivity extends PetActivity {
         if(usuarioLogado.getBairro()==null || usuarioLogado.getBairro().trim().equals("")) {
             if (spEstado.getSelectedItemPosition() == 0) {
                 MessageUtil.messageWarning(this, this.getString(R.string.selEstado));
-                //ValidationUtil.setFocus(this,spEstado);
+                //ValidationAndroidUtil.setFocus(this,spEstado);
                 return;
             }
             if (spCidade.getSelectedItemPosition() == 0) {
                 MessageUtil.messageWarning(this, this.getString(R.string.selCidade));
-               // ValidationUtil.setFocus(this,spCidade);
+               // ValidationAndroidUtil.setFocus(this,spCidade);
                 return;
             }
             if (spBairro.getSelectedItemPosition() == 0) {
                 MessageUtil.messageWarning(this, this.getString(R.string.selBairro));
-               // ValidationUtil.setFocus(this,spBairro);
+               // ValidationAndroidUtil.setFocus(this,spBairro);
                 return;
             }
         }
 
         if(txtTelefone.getText().toString().length() != 15 && txtTelefone.getText().toString().replace("(","").replace(")","").replace("-","").trim().length()!=0){
             MessageUtil.messageWarning(this, this.getString(R.string.validacaoTelefone));
-           // ValidationUtil.setFocus(this,txtTelefone);
+           // ValidationAndroidUtil.setFocus(this,txtTelefone);
             return;
         }
 
