@@ -190,7 +190,7 @@ public class NovoPetActivity extends PetActivity {
     }
 
     private void goToVermifugo() {
-        Intent it = new Intent(this,ListaVermifugoActivity.class);
+        Intent it = new Intent(this,EdtVermifugoActivity.class);
         it.putExtra(AtributosUtil.PAR_ANIMAL,animal);
         startActivityForResult(it,AtributosUtil.INTENT_NOVO_VERMIFUGO);
     }

@@ -1,22 +1,29 @@
 package br.com.petshow.activity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -49,6 +56,9 @@ public class EdtTratamentoActivity extends PetActivity {
     Spinner spFrequencia;        //edtTratamento_spFrequencia
     EditText  txtDtInicio; // edtTratamento_txtDtInicio
     EditText   txtDtFim;  //   edtTratamento_txtDtFim
+    ImageView imgCalendario;
+    TextView   vAte;
+    EditText   txtHR;
 
     Animal animal;
     Tratamento tratamento;
@@ -93,6 +103,9 @@ public class EdtTratamentoActivity extends PetActivity {
         txtNome=(EditText) findViewById(R.id.edtTratamento_txtNome);
         txtDtInicio=(EditText) findViewById(R.id.edtTratamento_txtDtInicio);
         txtDtFim=(EditText) findViewById(R.id.edtTratamento_txtDtFim);
+        imgCalendario =(ImageView)  findViewById(R.id.edtTratamento_imgData);
+        vAte =(TextView)   findViewById(R.id.edtTratamento_lblAte);
+        txtHR =(EditText)   findViewById(R.id.edtTratamento_txtHR);
 
         spFrequencia.setAdapter(new ArrayAdapter<EnumFrequenciaTratamento>(this, android.R.layout.simple_list_item_1, EnumFrequenciaTratamento.values()));
 
@@ -103,6 +116,14 @@ public class EdtTratamentoActivity extends PetActivity {
         EdtTratamentoActivity.ExibeDataFim exibeDataFim =new EdtTratamentoActivity.ExibeDataFim();
         txtDtFim.setOnClickListener(exibeDataFim);
         txtDtFim.setOnFocusChangeListener(exibeDataFim);
+        spFrequencia.setOnItemSelectedListener(new FrequenciaListeners());
+
+        ExibeHora exibeHora= new ExibeHora();
+        txtHR.setOnClickListener(exibeHora);
+        txtHR.setOnFocusChangeListener(exibeHora);
+
+
+
 
 
 
@@ -160,10 +181,10 @@ public class EdtTratamentoActivity extends PetActivity {
 
         Calendar calFim = Calendar.getInstance();
         calFim.setTime(tratamento.getDataTermino());
-        String dtFim = DateUtilsAndroid.dateToString(  cal.get(Calendar.YEAR),  cal.get(Calendar.MONTH),  cal.get(Calendar.DAY_OF_MONTH));
+        String dtFim = DateUtilsAndroid.dateToString(  calFim.get(Calendar.YEAR),  calFim.get(Calendar.MONTH),  calFim.get(Calendar.DAY_OF_MONTH));
         txtDtInicio.setText(dtFim);
         setSpinnerFrequencia(spFrequencia,tratamento.getFrequencia().getId(),tratamento.getFrequencia().toString());
-
+         txtDtInicio.setText(DateUtilsAndroid.hrToString(tratamento.getHrTratamento()));
 
 
     }
@@ -358,6 +379,7 @@ public class EdtTratamentoActivity extends PetActivity {
         DatePickerDialog dlg = new DatePickerDialog(this,android.R.style.Theme_Material_Light_Dialog_Alert,new EdtTratamentoActivity.SelecionaDataFimListener(),calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
         dlg.show();
 
+
     }
     public void loadVariablesExternal(){
         Bundle bundle= getIntent().getExtras();
@@ -368,4 +390,137 @@ public class EdtTratamentoActivity extends PetActivity {
             tratamento = (Tratamento) bundle.getSerializable(AtributosUtil.PAR_TRATAMENTO);
         }
     }
+
+    private class FrequenciaListeners implements AdapterView.OnItemSelectedListener {
+
+
+        public FrequenciaListeners(){
+
+        }
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            EnumFrequenciaTratamento enumF =(EnumFrequenciaTratamento) parent.getItemAtPosition(position);
+            if(enumF.getId()>= 50){
+                txtDtFim.setVisibility(View.INVISIBLE);
+                txtDtInicio.setVisibility(View.INVISIBLE);
+                imgCalendario.setVisibility(View.INVISIBLE);
+                vAte.setVisibility(View.INVISIBLE);
+            }else{
+                txtDtFim.setVisibility(View.VISIBLE);
+                txtDtInicio.setVisibility(View.VISIBLE);
+                imgCalendario.setVisibility(View.VISIBLE);
+                vAte.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+//    public static class TimePickerFragment extends DialogFragment
+//            implements TimePickerDialog.OnTimeSetListener {
+//
+//        @Override
+//        public Dialog onCreateDialog(Bundle savedInstanceState) {
+//            // Use the current time as the default values for the picker
+//            final Calendar c = Calendar.getInstance();
+//            int hour = c.get(Calendar.HOUR_OF_DAY);
+//            int minute = c.get(Calendar.MINUTE);
+//
+//            // Create a new instance of TimePickerDialog and return it
+//            return new TimePickerDialog(getActivity(), this, hour, minute,
+//                    DateFormat.is24HourFormat(getActivity()));
+//        }
+//
+//        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//            // Do something with the time chosen by the user
+//        }
+//    }
+//
+//    private class ExibeHora implements  View.OnClickListener, View.OnFocusChangeListener{
+//
+//
+//        @Override
+//        public void onClick(View v) {
+//            DialogFragment newFragment = new TimePickerFragment();
+//            newFragment.show(, "timePicker");
+//            newFragment.
+//        }
+//
+//        @Override
+//        public void onFocusChange(View v, boolean hasFocus) {
+//
+//            if(hasFocus){
+//                exibeDataFim();
+//            }
+//        }
+//    }
+
+    private class ExibeHora implements  View.OnClickListener, View.OnFocusChangeListener{
+
+
+        @Override
+        public void onClick(View v) {
+
+            Calendar mcurrentTime = Calendar.getInstance();
+            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+            int minute = mcurrentTime.get(Calendar.MINUTE);
+            TimePickerDialog mTimePicker;
+            mTimePicker = new TimePickerDialog(EdtTratamentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                    String hora=""+selectedHour;
+                    String minuto=""+selectedMinute;
+                    if(selectedHour <10){
+                        hora="0"+hora;
+                    }
+                    if(selectedMinute <10){
+                        minuto="0"+minuto;
+                    }
+                    txtHR.setText( hora + ":" + minuto);
+                    tratamento.setHrTratamento(DateUtilsAndroid.getTime(selectedHour,selectedMinute));
+                }
+            }, hour, minute, true);//Yes 24 hour time
+            mTimePicker.setTitle("Select Time");
+            mTimePicker.show();
+
+        }
+
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            //if(isCodeLoadDtInicio==0) {
+            if (hasFocus) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(EdtTratamentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        String hora=""+selectedHour;
+                        String minuto=""+selectedMinute;
+                        if(selectedHour <10){
+                            hora="0"+hora;
+                        }
+                        if(selectedMinute <10){
+                            minuto="0"+minuto;
+                        }
+                        txtHR.setText( hora + ":" + minuto);
+                        tratamento.setHrTratamento(DateUtilsAndroid.getTime(selectedHour,selectedMinute));
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+            //}else{
+            //   --isCodeLoadDtInicio;
+            //}
+        }
+    }
+
+
 }
