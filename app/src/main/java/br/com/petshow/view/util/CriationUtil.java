@@ -1,7 +1,9 @@
 package br.com.petshow.view.util;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 
 import android.widget.Spinner;
@@ -9,6 +11,7 @@ import android.widget.Spinner;
 import java.util.List;
 
 import br.com.petshow.R;
+import br.com.petshow.activity.PetActivity;
 import br.com.petshow.enums.EnumTipoAnimal;
 
 
@@ -50,8 +53,16 @@ public class CriationUtil {
             progressDialog.dismiss();
         }
 
-
-
-
+    }
+    public static void openAlertDialog(Context ctx,int idMessage, int title){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        builder.setMessage(idMessage).setTitle(title);
+        builder.setPositiveButton(R.string.lblOK, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

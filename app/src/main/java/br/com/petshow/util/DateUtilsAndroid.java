@@ -17,6 +17,15 @@ public class DateUtilsAndroid {
 
         return data;
     }
+
+    public static Date getTime(int hour,int minute){
+        Calendar calendar =  Calendar.getInstance();
+        calendar.set(1900,01,01,hour,minute);
+
+        Date data =calendar.getTime();
+
+        return data;
+    }
     public static String dateToString(int year,int month, int day){
         // meses o index inicia em 0 e termina em 11
         Calendar calendar =  Calendar.getInstance();
@@ -35,6 +44,12 @@ public class DateUtilsAndroid {
         return dt;
     }
 
+    public static String hrToString(Date date){
+        Calendar calendar =  Calendar.getInstance();
+        calendar.setTime(date);
+        String hr =(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE));
+        return hr;
+    }
 
 
     public static String dateTo_ddMMYYYY(Date date){

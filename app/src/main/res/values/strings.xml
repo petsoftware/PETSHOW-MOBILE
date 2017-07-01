@@ -31,6 +31,8 @@
     <string name="selIdade">Selecione a idade</string>
     <string name="selPorte">Selecione o porte</string>
 
+    <string name="lblOK">OK</string>
+
     <string name="validacaoAnimalEntreguePerdido">Animal Já foi entregue ao dono não pode ser alterado!</string>
     <string name="validacaoDataPerdidoAchado">Prencha o campo Data</string>
     <string name="validacaoTelefone">Prencha o campo Telefone Ex:(99) 99999-9999</string>
@@ -62,6 +64,7 @@
     <string name="sucessPetExcluir">Pet Excluido!</string>
     <string name="sucessVacinaAdd">Vacina Cadastrado!</string>
     <string name="sucessVacinaExcluir">Vacina Excluido!</string>
+    <string name="sucessVermifugoAdd">Vermifugo Cadastrado!</string>
     <string name="sucessTratamentoAdd">Tratamento Cadastrado!</string>
     <string name="sucessTratamentoExcluir">Tratamento Excluido!</string>
     <string name="msgUserNotFriend">Usuario nao é seu amigo!</string>
@@ -86,6 +89,8 @@
     <string name="menuTratamento">Tratamentos</string>
     <string name="menuVermifugo">Vermifugos</string>
     <string name="msgSalvo">Salvo com sucesso!</string>
+
+    <string name="msgTelaSalvarVermifugo">Foram atualizadas as datas para a proxima vez que for tomado o vermifugo, favor verificar se são as desejadas!</string>
 
     <!-- Strings related to Settings -->
 
@@ -187,7 +192,12 @@
     <string name="lblAplicada">Aplicada</string>
     <string name="lblDataPrevisao">Data Previsão</string>
     <string name="lblAte">até</string>
-    <string name="lblTratamento">Tratamento</string>
+    <string name="lblTratamento" >Tratamento</string>
+    <string name="lbl1Dose">1º Dose</string>
+    <string name="lblReforco">"2º Dose (Reforço) "</string>
+    <string name="lblTomou">Tomou ?</string>
+    <string name="lblVermeAnterior">Vermifugo Anterior</string>
+    <string name="title_alert_aviso">Aviso</string>
     <string name="title_activity_perfil_adocao">PerfilAdocaoActivity</string>
 
 </resources>
