@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.petshow.activity.PerfilAdocaoActivity"
+    tools:showIn="@layout/activity_perfil_adocao">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+        <ImageView
+            android:id="@+id/perfilAdocao_imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/alert_circle_outline" />
+
+        <Spinner
+            android:id="@+id/perfilAdocao_spTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+        <ImageView
+            android:id="@+id/perfilAdocao_imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/alert_circle_outline" />
+
+        <Spinner
+            android:id="@+id/perfilAdocao_spFase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+        <ImageView
+            android:id="@+id/perfilAdocao_imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/alert_circle_outline" />
+
+        <Spinner
+            android:id="@+id/perfilAdocao_spPorte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+        <ImageView
+            android:id="@+id/perfilAdocao_imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/alert_circle_outline" />
+
+        <Spinner
+            android:id="@+id/perfilAdocao_spSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

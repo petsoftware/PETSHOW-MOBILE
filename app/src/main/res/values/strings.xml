@@ -85,6 +85,7 @@
     <string name="menuVacina">Vacinas</string>
     <string name="menuTratamento">Tratamentos</string>
     <string name="menuVermifugo">Vermifugos</string>
+    <string name="msgSalvo">Salvo com sucesso!</string>
 
     <!-- Strings related to Settings -->
 
@@ -186,6 +187,7 @@
     <string name="lblAplicada">Aplicada</string>
     <string name="lblDataPrevisao">Data Previsão</string>
     <string name="lblAte">até</string>
-    <string name="lblTratamento" >Tratamento</string>
+    <string name="lblTratamento">Tratamento</string>
+    <string name="title_activity_perfil_adocao">PerfilAdocaoActivity</string>
 
 </resources>
