@@ -13,12 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import br.com.petshow.R;
+import br.com.petshow.enums.EnumFaseVida;
 import br.com.petshow.enums.EnumFrequenciaTratamento;
+import br.com.petshow.enums.EnumPorteAnimal;
+import br.com.petshow.enums.EnumTipoAnimal;
+import br.com.petshow.model.PerfilAdocao;
 import br.com.petshow.model.Tratamento;
 import br.com.petshow.util.DateUtilsAndroid;
 import br.com.petshow.util.JsonUtil;
@@ -32,7 +37,7 @@ import br.com.petshow.web.util.RequestListObjects;
 import br.com.petshow.web.util.RequestPostEntity;
 
 public class PerfilAdocaoActivity extends PetActivity {
-/*
+
     Spinner spTipo;
     Spinner spFase;
     Spinner spPorte;
@@ -48,10 +53,12 @@ public class PerfilAdocaoActivity extends PetActivity {
         startVariables();
         if(perfilAdocao!=null  && perfilAdocao.getId()>0) {
             loadPerfil();
-
+            if(perfilAdocao==null){
+                loadSpinnersValuesDefault();
+            }
         }else{
           //Preencher
-            loadSpinners(null);
+            //loadSpinners(null);
         }
     }
     public void startComponents() {
@@ -104,6 +111,8 @@ public class PerfilAdocaoActivity extends PetActivity {
         perfilAdocao= perfilAdocao==null?new PerfilAdocao():perfilAdocao;
 
     }
+
+    //Utilizaremos este metodo para buscar e preencher spnners de acordo com o banco de dados
 
     private void loadSpinnerTipo(String tipo){
         //No caso nos chamamos o RequestListObject pois queremos chamar um REST q vai retornar uma lista
@@ -160,7 +169,11 @@ public class PerfilAdocaoActivity extends PetActivity {
             @Override
             public void successWithReturn(String json) {
                 MessageUtil.messageSucess(getContext(),getContext().getString(R.string.msgSalvo));
-                perfilAdocao = JsonUtil.transformObject(json,PerfilAdocao.class );
+                try {
+                    perfilAdocao = JsonUtil.transformObject(json,PerfilAdocao.class );
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 CriationUtil.closeProgressBar(progressDialog);
             }
 
@@ -174,12 +187,12 @@ public class PerfilAdocaoActivity extends PetActivity {
                 MessageUtil.messageWarning(getContext(),map.getMessage());
                 CriationUtil.closeProgressBar(progressDialog);
             }
-        }).execute("url do REST",objetoQuuQueroSalvarNoRest);
+        }).execute("url do REST",perfilAdocao);
     }
 
     private void loadPerfil(){
         //TODO Carregar os valores detro dos componentes
-        loadSpinnerTipo(perfilAdocao.getTipo().toString());
+        loadSpinnerTipo(perfilAdocao.getTipoAnimal().toString());
     }
 
     private void onClickSalvar(){
@@ -192,5 +205,13 @@ public class PerfilAdocaoActivity extends PetActivity {
 
     private void excluir(){
 
-    }*/
+    }
+
+    private void loadSpinnersValuesDefault(){
+    //spFaixaIdade.setAdapter(new ArrayAdapter<EnumFaseVida>(this, android.R.layout.simple_list_item_1, EnumFaseVida.values()));
+
+        spTipo.setAdapter(new ArrayAdapter<EnumTipoAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumTipoAnimal.values()));
+        spFase.setAdapter(new ArrayAdapter<EnumFaseVida>(this,R.layout.support_simple_spinner_dropdown_item, EnumFaseVida.values()));
+        spPorte.setAdapter(new ArrayAdapter<EnumPorteAnimal>(this,R.layout.support_simple_spinner_dropdown_item, EnumPorteAnimal.values()));
+    }
 }
