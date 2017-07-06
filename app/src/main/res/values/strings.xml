@@ -88,6 +88,7 @@
     <string name="menuVacina">Vacinas</string>
     <string name="menuTratamento">Tratamentos</string>
     <string name="menuVermifugo">Vermifugos</string>
+    <string name="msgSalvo">Salvo com sucesso!</string>
 
     <string name="msgTelaSalvarVermifugo">Foram atualizadas as datas para a proxima vez que for tomado o vermifugo, favor verificar se são as desejadas!</string>
 
@@ -197,5 +198,6 @@
     <string name="lblTomou">Tomou ?</string>
     <string name="lblVermeAnterior">Vermifugo Anterior</string>
     <string name="title_alert_aviso">Aviso</string>
+    <string name="title_activity_perfil_adocao">PerfilAdocaoActivity</string>
 
 </resources>
