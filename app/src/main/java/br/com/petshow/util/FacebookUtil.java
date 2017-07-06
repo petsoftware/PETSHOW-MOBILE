@@ -114,7 +114,7 @@ public class FacebookUtil {
            // usuario.setFlTpEstabelecimento(null);
             usuario.setEmail(email);
             usuario.setFlPreCadastro(false);
-            usuario.setEmail("semEmail@hotmail.com");
+
             usuario.setPassword("semPassword4848648");
             usuario.setNmLogin("semNmLogin4848648");
             usuario.setURLFacebook(Profile.getCurrentProfile().getLinkUri().toString());
