@@ -4,11 +4,13 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import java.io.IOException;
 import java.util.List;
 import br.com.petshow.R;
+import br.com.petshow.enums.EnumCor;
 import br.com.petshow.enums.EnumFaseVida;
 import br.com.petshow.enums.EnumPorteAnimal;
 import br.com.petshow.enums.EnumTipoAnimal;
@@ -41,15 +43,18 @@ public class PerfilAdocaoActivity extends PetActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_adocao);
 
+        perfilAdocao = new PerfilAdocao();
+        perfilAdocao.setId(1);
+        perfilAdocao.setFaseVida(EnumFaseVida.ADULTO);
+        perfilAdocao.setPorteAnimal(EnumPorteAnimal.MEDIO);
+        perfilAdocao.setTipoAnimal(EnumTipoAnimal.LAGARTO);
+
+
         startComponents();
         startVariables();
+        loadSpinnersValuesDefault();
         if(perfilAdocao!=null  && perfilAdocao.getId()>0) {
-            if(perfilAdocao==null){
-                loadSpinnersValuesDefault();
-            }
-        }else{
-          //Preencher
-
+            loadSpinners(perfilAdocao);
         }
     }
     public void startComponents() {
@@ -61,6 +66,9 @@ public class PerfilAdocaoActivity extends PetActivity {
         spFase  =(Spinner) findViewById(R.id.perfilAdocao_spFase);
         spPorte =(Spinner) findViewById(R.id.perfilAdocao_spPorte);
 
+        spTipo.setAdapter(new ArrayAdapter<EnumTipoAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumTipoAnimal.values()));
+        spFase.setAdapter(new ArrayAdapter<EnumFaseVida>(this,R.layout.support_simple_spinner_dropdown_item,EnumFaseVida.values()));
+        spPorte.setAdapter(new ArrayAdapter<EnumPorteAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumPorteAnimal.values()));
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,31 +109,82 @@ public class PerfilAdocaoActivity extends PetActivity {
     public void startVariables(){
         //Initializing variable
         perfilAdocao        = perfilAdocao==null?new PerfilAdocao():perfilAdocao;
-        faseVidaAdapter     = new ArrayAdapter<EnumFaseVida>(this,R.layout.support_simple_spinner_dropdown_item,EnumFaseVida.values());
-        tipoAnimalAdapter   = new ArrayAdapter<EnumTipoAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumTipoAnimal.values());
-        porteAnimalAdapter  = new ArrayAdapter<EnumPorteAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumPorteAnimal.values());
+//        faseVidaAdapter     = new ArrayAdapter<EnumFaseVida>(this,R.layout.support_simple_spinner_dropdown_item,EnumFaseVida.values());
+//        tipoAnimalAdapter   = new ArrayAdapter<EnumTipoAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumTipoAnimal.values());
+//        porteAnimalAdapter  = new ArrayAdapter<EnumPorteAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumPorteAnimal.values());
     }
 
     //Utilizaremos este metodo para buscar e preencher spnners de acordo com o banco de dados
 
     private void loadSpinners(PerfilAdocao perfilAdocao){
 
-       if(perfilAdocao!=null){
-           if(perfilAdocao.getFaseVida() != null){
-               int positionFaseVida = faseVidaAdapter.getPosition(perfilAdocao.getFaseVida());
-               spFase.setSelection(positionFaseVida);
-           }
-           if(perfilAdocao.getPorteAnimal() != null){
-               int positionPorteAnimal = porteAnimalAdapter.getPosition(perfilAdocao.getPorteAnimal());
-               spPorte.setSelection(positionPorteAnimal);
-           }
-           if(perfilAdocao.getTipoAnimal() != null){
-               int positionTipoAnimal = tipoAnimalAdapter.getPosition(perfilAdocao.getTipoAnimal());
-               spTipo.setSelection(positionTipoAnimal);
-           }
-       }
+        setSpinnerFaseVida(spFase,perfilAdocao.getFaseVida().getId(),perfilAdocao.getFaseVida().toString());
+        setSpinnerPorteAnimal(spPorte,perfilAdocao.getPorteAnimal().getId(),perfilAdocao.getPorteAnimal().toString());
+        setSpinnerTipoAnimal(spTipo,perfilAdocao.getTipoAnimal().getId(),perfilAdocao.getTipoAnimal().toString());
+//       if(perfilAdocao!=null){
+//           if(perfilAdocao.getFaseVida() != null){
+//               String value = perfilAdocao.getFaseVida().name();
+//               int positionFaseVida = faseVidaAdapter.getPosition(perfilAdocao.getFaseVida());
+//               spFase.setSelection(positionFaseVida);
+//           }
+//           if(perfilAdocao.getPorteAnimal() != null){
+//               int positionPorteAnimal = porteAnimalAdapter.getPosition(perfilAdocao.getPorteAnimal());
+//               spPorte.setSelection(positionPorteAnimal);
+//           }
+//           if(perfilAdocao.getTipoAnimal() != null){
+//               int positionTipoAnimal = tipoAnimalAdapter.getPosition(perfilAdocao.getTipoAnimal());
+//               spTipo.setSelection(positionTipoAnimal);
+//           }
+//       }
+
 
     }
+
+    private void setSpinnerFaseVida(Spinner sp,int id,String desc){
+        Adapter adapter = sp.getAdapter();
+        int n = adapter.getCount();
+        for (int i = 0; i < n; i++) {
+            try {
+                EnumFaseVida enume = (EnumFaseVida) adapter.getItem(i);
+                if(enume.getId()== id && desc.equals(enume.toString())){
+                    sp.setSelection(i);
+                }
+            }catch (ClassCastException ex) {
+
+            }
+        }
+    }
+
+    private void setSpinnerPorteAnimal(Spinner sp,int id,String desc){
+        Adapter adapter = sp.getAdapter();
+        int n = adapter.getCount();
+        for (int i = 0; i < n; i++) {
+            try {
+                EnumPorteAnimal enume = (EnumPorteAnimal) adapter.getItem(i);
+                if(enume.getId()== id && desc.equals(enume.toString())){
+                    sp.setSelection(i);
+                }
+            }catch (ClassCastException ex) {
+
+            }
+        }
+    }
+
+    private void setSpinnerTipoAnimal(Spinner sp,int id,String desc){
+        Adapter adapter = sp.getAdapter();
+        int n = adapter.getCount();
+        for (int i = 0; i < n; i++) {
+            try {
+                EnumTipoAnimal enume = (EnumTipoAnimal) adapter.getItem(i);
+                if(enume.getId()== id && desc.equals(enume.toString())){
+                    sp.setSelection(i);
+                }
+            }catch (ClassCastException ex) {
+
+            }
+        }
+    }
+
 
     public void  salvar(){
        CriationUtil.openProgressBar(progressDialog);
@@ -171,8 +230,6 @@ public class PerfilAdocaoActivity extends PetActivity {
     private void loadSpinnersValuesDefault(){
     //spFaixaIdade.setAdapter(new ArrayAdapter<EnumFaseVida>(this, android.R.layout.simple_list_item_1, EnumFaseVida.values()));
 
-        spTipo.setAdapter(tipoAnimalAdapter);
-        spFase.setAdapter(faseVidaAdapter);
-        spPorte.setAdapter(porteAnimalAdapter);
+
     }
 }

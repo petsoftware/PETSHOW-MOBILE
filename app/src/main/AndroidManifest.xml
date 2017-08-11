@@ -131,6 +131,10 @@
         <activity
             android:name=".activity.PerfilAdocaoActivity"
             android:label="@string/title_activity_perfil_adocao"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PerAdocaoActivity"
+            android:label="@string/title_activity_per_adocao"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

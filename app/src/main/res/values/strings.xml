@@ -192,12 +192,13 @@
     <string name="lblAplicada">Aplicada</string>
     <string name="lblDataPrevisao">Data Previsão</string>
     <string name="lblAte">até</string>
-    <string name="lblTratamento" >Tratamento</string>
+    <string name="lblTratamento">Tratamento</string>
     <string name="lbl1Dose">1º Dose</string>
     <string name="lblReforco">"2º Dose (Reforço) "</string>
     <string name="lblTomou">Tomou ?</string>
     <string name="lblVermeAnterior">Vermifugo Anterior</string>
     <string name="title_alert_aviso">Aviso</string>
     <string name="title_activity_perfil_adocao">PerfilAdocaoActivity</string>
+    <string name="title_activity_per_adocao">PerAdocaoActivity</string>
 
 </resources>
