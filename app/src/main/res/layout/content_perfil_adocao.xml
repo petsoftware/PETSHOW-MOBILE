@@ -16,7 +16,7 @@
         android:paddingBottom="@dimen/DistanciaEntreCamposM">
 
         <ImageView
-            android:id="@+id/perfilAdocao_imageView1"
+            android:id="@+id/perfilAdocao_ivTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -38,7 +38,7 @@
         android:paddingBottom="@dimen/DistanciaEntreCamposM">
 
         <ImageView
-            android:id="@+id/perfilAdocao_imageView2"
+            android:id="@+id/perfilAdocao_ivFase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -60,7 +60,7 @@
         android:paddingBottom="@dimen/DistanciaEntreCamposM">
 
         <ImageView
-            android:id="@+id/perfilAdocao_imageView3"
+            android:id="@+id/perfilAdocao_ivPorte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -82,7 +82,7 @@
         android:paddingBottom="@dimen/DistanciaEntreCamposM">
 
         <ImageView
-            android:id="@+id/perfilAdocao_imageView4"
+            android:id="@+id/perfilAdocao_ivSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
