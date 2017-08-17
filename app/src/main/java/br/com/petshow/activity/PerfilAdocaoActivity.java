@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import br.com.petshow.R;
 import br.com.petshow.enums.EnumFaseVida;
+import br.com.petshow.enums.EnumFlAtivo;
 import br.com.petshow.enums.EnumPorteAnimal;
 import br.com.petshow.enums.EnumSexo;
 import br.com.petshow.enums.EnumTipoAnimal;
@@ -36,10 +37,12 @@ public class PerfilAdocaoActivity extends PetActivity {
     Spinner spFase;
     Spinner spPorte;
     Spinner spSexo;
+    Spinner spFlAtivo;
     ImageView ivTipo;
     ImageView ivFase;
     ImageView ivPorte;
     ImageView ivSexo;
+    ImageView ivFlAtivo;
     //Object model from DataBase by REST
     PerfilAdocao perfilAdocao;
 
@@ -63,27 +66,31 @@ public class PerfilAdocaoActivity extends PetActivity {
         spFase  =(Spinner) findViewById(R.id.perfilAdocao_spFase);
         spPorte =(Spinner) findViewById(R.id.perfilAdocao_spPorte);
         spSexo  =(Spinner) findViewById(R.id.perfilAdocao_spSexo);
-
+        spFlAtivo=(Spinner) findViewById(R.id.perfilAdocao_spFlAtivo);
+        //NOTE: Setting Adpters to Spinners
         spTipo.setAdapter(new ArrayAdapter<EnumTipoAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumTipoAnimal.values()));
         spFase.setAdapter(new ArrayAdapter<EnumFaseVida>(this,R.layout.support_simple_spinner_dropdown_item,EnumFaseVida.values()));
         spPorte.setAdapter(new ArrayAdapter<EnumPorteAnimal>(this,R.layout.support_simple_spinner_dropdown_item,EnumPorteAnimal.values()));
         spSexo.setAdapter(new ArrayAdapter<EnumSexo>(this,R.layout.support_simple_spinner_dropdown_item,EnumSexo.values()));
-
+        spFlAtivo.setAdapter(new ArrayAdapter<EnumFlAtivo>(this,R.layout.support_simple_spinner_dropdown_item,EnumFlAtivo.values()));
+        //NOTE: Setting the Listners
         spTipo.setOnItemSelectedListener(new TipoAnimalListner());
         spFase.setOnItemSelectedListener(new FaseVidaListner());
         spPorte.setOnItemSelectedListener(new PorteAnimalListner());
         spSexo.setOnItemSelectedListener(new SexoListner());
+        spFlAtivo.setOnItemSelectedListener(new FlAtivoListner());
 
         ivFase = (ImageView) findViewById(R.id.perfilAdocao_ivFase);
         ivPorte= (ImageView) findViewById(R.id.perfilAdocao_ivPorte);
         ivSexo = (ImageView) findViewById(R.id.perfilAdocao_ivSexo);
         ivTipo = (ImageView) findViewById(R.id.perfilAdocao_ivTipo);
+        ivFlAtivo = (ImageView) findViewById(R.id.perfilAdocao_ivFlAtivo);
 
         ivPorte.setImageResource(R.drawable.select_combo);
         ivFase.setImageResource(R.drawable.select_combo);
         ivSexo.setImageResource(R.drawable.select_combo);
         ivTipo.setImageResource(R.drawable.select_combo);
-
+        ivFlAtivo.setImageResource(R.drawable.select_combo);
 
     }
 
@@ -167,6 +174,14 @@ public class PerfilAdocaoActivity extends PetActivity {
             ivSexo.setImageResource(R.drawable.ic_macho);
         }else{
             ivSexo.setImageResource(R.drawable.ic_femea);
+        }
+    }
+
+    private void setFlAtivoComboImagem(EnumFlAtivo flAtivo){
+        if(flAtivo == EnumFlAtivo.ATIVO){
+            ivFlAtivo.setImageResource(R.drawable.ic_checked);
+        }else{
+            ivFlAtivo.setImageResource(R.drawable.ic_unchecked);
         }
     }
     private void setFaseVidaComboImagem(EnumFaseVida enumFaseVida){
@@ -375,6 +390,32 @@ public class PerfilAdocaoActivity extends PetActivity {
             EnumSexo enumSexo = EnumSexo.getEnum(spSexo.getSelectedItem().toString());
             perfilAdocao.setSexo(enumSexo);
             setSexoAnimalComboImagem(enumSexo);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    private class FlAtivoListner implements AdapterView.OnItemSelectedListener {
+        public FlAtivoListner(){
+
+        }
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            EnumFlAtivo enumFlAtivo = EnumFlAtivo.ATIVO.getEnum(spFlAtivo.getSelectedItem().toString());
+            boolean isAtivo = true;
+            if(enumFlAtivo == EnumFlAtivo.INATIVO){
+                MessageUtil.messageWarning(getBaseContext(),"Inativar o perfil de adoção fará com que você não receba mais " +
+                        "Alertas de animais com esse perfil para adoção.");
+                isAtivo = false;
+            }else{
+                MessageUtil.messageSucess(getBaseContext(),"Você receberá notificações quando um animal com esse perfil ficar disponível");
+                isAtivo = true;
+            }
+            perfilAdocao.setFlAtivo(isAtivo);
+            setFlAtivoComboImagem(enumFlAtivo);
         }
 
         @Override

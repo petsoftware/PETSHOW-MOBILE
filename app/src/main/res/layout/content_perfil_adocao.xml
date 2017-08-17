@@ -97,5 +97,35 @@
             android:paddingTop="10dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DistanciaEntreCamposM">
+
+        <ImageView
+            android:id="@+id/perfilAdocao_ivFlAtivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/alert_circle_outline" />
+
+        <Spinner
+            android:id="@+id/perfilAdocao_spFlAtivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
 
 </LinearLayout>
