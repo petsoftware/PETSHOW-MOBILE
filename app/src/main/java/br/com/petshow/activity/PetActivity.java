@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import br.com.petshow.model.PerfilAdocao;
+
 /**
  * Created by bruno on 21/03/2017.
  */
@@ -21,7 +23,7 @@ public class PetActivity extends AppCompatActivity {
         view.getContext().startActivity(it);
     }
     public void goToListMessages(View view){
-        Intent it = new Intent(view.getContext(),ListaPetsActivity.class);
+        Intent it = new Intent(view.getContext(),PerfilAdocaoActivity.class);
         view.getContext().startActivity(it);
     }
     public void goToListNotification(View view){

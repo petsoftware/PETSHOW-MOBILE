@@ -55,6 +55,8 @@ public class PerfilAdocaoActivity extends PetActivity {
         loadSpinnersValuesDefault();
         if(perfilAdocao!=null  && perfilAdocao.getId()>0) {
             loadSpinners(perfilAdocao);
+        }else{
+            MessageUtil.messageSucess(this,"Escolha as caracteristicas do pet que você deseja adotar.");
         }
     }
     public void startComponents() {
