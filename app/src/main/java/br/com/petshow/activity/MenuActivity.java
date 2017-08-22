@@ -33,6 +33,7 @@ public class MenuActivity extends PetActivity {
 
     TextView txtNome ;
     TextView txtEmail ;
+    TextView txtTelefone ;
     ImageView imgProfileFacebook;
     Button btnLogout;
     Button btnEdtUsuario;
